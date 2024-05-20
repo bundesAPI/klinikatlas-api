@@ -46,6 +46,12 @@ paths:
                       type: string
                     link:
                       type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/states.json:
     get:
@@ -70,6 +76,12 @@ paths:
                       type: integer
                     location_number:
                       type: integer
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/german-states.json:
     get:
@@ -90,6 +102,12 @@ paths:
                       type: string
                     lon:
                       type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/icd_codes.json:
     get:
@@ -108,6 +126,12 @@ paths:
                       type: string
                     description:
                       type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/ops_codes.json:
     get:
@@ -126,6 +150,12 @@ paths:
                       type: string
                     description:
                       type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/german-places.json:
     get:
@@ -154,6 +184,12 @@ paths:
                       type: string
                     ln:
                       type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /searchresults/:
     get:
@@ -345,7 +381,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: string
+                            type: integer
                           geolabel:
                             type: string
                           latlon:
@@ -355,7 +391,7 @@ paths:
                           searchlabel:
                             type: string
                           start:
-                            type: string
+                            type: integer
                           quantile:
                             type: string
                           department:
@@ -366,8 +402,14 @@ paths:
                         type: string
                       loadMore:
                         type: boolean
-
-  /krankenhaussuche/krankenhaus/{id}/:
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
+                
+    /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Details zu einem spezifischen Krankenhaus abrufen
       parameters:
@@ -409,4 +451,15 @@ paths:
             text/html:
               schema:
                 type: string
-
+        '404':
+          description: Nicht gefunden
+          content:
+            text/html:
+              schema:
+                type: string
+        '503':
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string

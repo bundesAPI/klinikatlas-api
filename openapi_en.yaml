@@ -17,7 +17,7 @@ paths:
     get:
       summary: Retrieve a list of German clinics
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -46,12 +46,18 @@ paths:
                       type: string
                     link:
                       type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/states.json:
     get:
       summary: Retrieve a list of German states
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -70,12 +76,18 @@ paths:
                       type: integer
                     location_number:
                       type: integer
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/german-states.json:
     get:
       summary: Retrieve a list of German states with coordinates
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -90,12 +102,18 @@ paths:
                       type: string
                     lon:
                       type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/icd_codes.json:
     get:
       summary: Retrieve a list of ICD codes
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -108,12 +126,18 @@ paths:
                       type: string
                     description:
                       type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/ops_codes.json:
     get:
       summary: Retrieve a list of OPS codes
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -126,12 +150,18 @@ paths:
                       type: string
                     description:
                       type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /fileadmin/json/german-places.json:
     get:
       summary: Retrieve a list of German places
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -154,6 +184,12 @@ paths:
                       type: string
                     ln:
                       type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
   /searchresults/:
     get:
@@ -163,12 +199,12 @@ paths:
           in: query
           schema:
             type: integer
-          description: Start index for the search results
+          description: Start index for search results
         - name: tx_solr[rows]
           in: query
           schema:
             type: integer
-          description: Number of rows to return
+          description: Number of rows to return (must be a positive integer)
         - name: tx_solr[geolabel]
           in: query
           schema:
@@ -205,7 +241,7 @@ paths:
             type: string
           description: Department for filtering results
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -345,7 +381,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: string
+                            type: integer
                           geolabel:
                             type: string
                           latlon:
@@ -355,7 +391,7 @@ paths:
                           searchlabel:
                             type: string
                           start:
-                            type: string
+                            type: integer
                           quantile:
                             type: string
                           department:
@@ -366,8 +402,14 @@ paths:
                         type: string
                       loadMore:
                         type: boolean
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
 
-  /krankenhaussuche/krankenhaus/{id}/:
+    /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Retrieve details of a specific hospital
       parameters:
@@ -403,16 +445,21 @@ paths:
             type: string
           description: Cache hash
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             text/html:
               schema:
                 type: string
-
-
-
-
-
-
-
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
