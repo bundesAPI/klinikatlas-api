@@ -1,45 +1,412 @@
 openapi: "3.0.0"
 info:
-  description: "API Description"
+  description: "Die API des Bundes-Klinik-Atlas stellt eine Vielzahl von Informationen über deutsche Kliniken und deren Ausstattung bereit."
   version: "1.0.0"
-  title: "API Name"
-  x-office: "Amtsname"
+  title: "Bundes-Klinik-Atlas API"
+  x-office: "Bundesministerium für Gesundheit"
   contact:
-    name: Zuständige Behörde
-    email: behoerde@example.de
-    url: https://example.de
+    name: "Bundesministerium für Gesundheit"
+    email: poststelle@bmg.bund.de
+    url: https://bundes-klinik-atlas.de
 
 servers:
-  - url: "https://warnung.bund.de/api31"
-
-tags:
-  - name: default
+  - url: https://bundes-klinik-atlas.de
 
 paths:
-  /dashboard/{AGS}.json:
+  /fileadmin/json/locations.json:
     get:
-      summary: Name des Endpoints
-      description: Hier wird die Funktion des Endpunktes beschrieben.
-      operationId: getAGS
-      tags:
-        - default
+      summary: Liste deutscher Kliniken abrufen
       responses:
-        "200":
-          description: OK
+        '200':
+          description: Erfolgreiche Antwort
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Result"
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    street:
+                      type: string
+                    city:
+                      type: string
+                    zip:
+                      type: integer
+                    phone:
+                      type: string
+                    mail:
+                      type: string
+                    beds_number:
+                      type: integer
+                    latitude:
+                      type: string
+                    longitude:
+                      type: string
+                    link:
+                      type: string
+
+  /fileadmin/json/states.json:
+    get:
+      summary: Liste deutscher Bundesländer abrufen
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    cases_number:
+                      type: integer
+                    caregivers_number:
+                      type: integer
+                    doctors_number:
+                      type: integer
+                    location_number:
+                      type: integer
+
+  /fileadmin/json/german-states.json:
+    get:
+      summary: Liste deutscher Bundesländer mit Koordinaten abrufen
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                    lat:
+                      type: string
+                    lon:
+                      type: string
+
+  /fileadmin/json/icd_codes.json:
+    get:
+      summary: Liste der ICD-Codes abrufen
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icdcode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/ops_codes.json:
+    get:
+      summary: Liste der OPS-Codes abrufen
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    opscode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/german-places.json:
+    get:
+      summary: Liste deutscher Orte abrufen
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    p:
+                      type: string
+                    c:
+                      type: string
+                    m:
+                      type: string
+                    ct:
+                      type: integer
+                    d:
+                      type: string
+                    lt:
+                      type: string
+                    ln:
+                      type: string
+
+  /searchresults/:
+    get:
+      summary: Suche nach Krankenhäusern basierend auf spezifischen Kriterien
       parameters:
-        - in: path
-          required: true
-          name: AGS
+        - name: tx_solr[start]
+          in: query
+          schema:
+            type: integer
+          description: Startindex für die Suchergebnisse
+        - name: tx_solr[rows]
+          in: query
+          schema:
+            type: integer
+          description: Anzahl der zurückzugebenden Zeilen
+        - name: tx_solr[geolabel]
+          in: query
           schema:
             type: string
-          description: Amtlicher Gebietsschlüssel - kann z.B. von [hier](https://www.xrepository.de/api/xrepository/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:rs_2021-07-31/download/Regionalschl_ssel_2021-07-31.json) bezogen werden. Die Letzten 7 Stellen müssen dabei mit "0000000" ersetzt werden, weil die Daten nur auf [Kreisebene](https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel) bereitgestellt werden.
-          example: "example-parameter"
+          description: Geographisches Label zum Filtern der Ergebnisse
+        - name: tx_solr[latlon]
+          in: query
+          schema:
+            type: string
+          description: Breitengrad und Längengrad zum Filtern der Ergebnisse
+        - name: tx_solr[ops]
+          in: query
+          schema:
+            type: string
+          description: OPS-Codes zum Filtern der Ergebnisse
+        - name: tx_solr[searchlabel]
+          in: query
+          schema:
+            type: string
+          description: Suchlabel zum Filtern der Ergebnisse
+        - name: tx_solr[icd]
+          in: query
+          schema:
+            type: string
+          description: ICD-Codes zum Filtern der Ergebnisse
+        - name: tx_solr[quantile]
+          in: query
+          schema:
+            type: string
+          description: Quantil zum Filtern der Ergebnisse
+        - name: tx_solr[department]
+          in: query
+          schema:
+            type: string
+          description: Abteilung zum Filtern der Ergebnisse
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        header:
+                          type: string
+                        address:
+                          type: string
+                        distance:
+                          type: number
+                        detailLink:
+                          type: string
+                        content:
+                          type: object
+                          properties:
+                            items:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  header:
+                                    type: string
+                                  icon:
+                                    type: string
+                                  tooltip:
+                                    type: string
+                                  infoData:
+                                    type: array
+                                    items:
+                                      type: object
+                  filters:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            template:
+                              type: string
+                            label:
+                              type: string
+                            extraClass:
+                              type: string
+                            tooltip:
+                              type: string
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            value:
+                              type: string
+                            showValue:
+                              type: integer
+                            appendUnit:
+                              type: string
+                            showRangeLabel:
+                              type: boolean
+                            sliderOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                            labelClass:
+                              type: string
+                            options:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  label:
+                                    type: string
+                                  id:
+                                    type: string
+                                  value:
+                                    type: string
+                                  icon:
+                                    type: string
+                                  selected:
+                                    type: boolean
+                                  tooltip:
+                                    type: string
+                            isAccordion:
+                              type: boolean
+                            tagName:
+                              type: string
+                            headingClass:
+                              type: string
+                            isHorizontal:
+                              type: boolean
+                  sortings:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            template:
+                              type: string
+                            isHorizontal:
+                              type: boolean
+                            label:
+                              type: string
+                            id:
+                              type: string
+                            options:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  label:
+                                    type: string
+                                  id:
+                                    type: string
+                                  value:
+                                    type: string
+                                  selected:
+                                    type: boolean
+                  metaInfos:
+                    type: object
+                    properties:
+                      searchArguments:
+                        type: object
+                        properties:
+                          rows:
+                            type: string
+                          geolabel:
+                            type: string
+                          latlon:
+                            type: string
+                          ops:
+                            type: string
+                          searchlabel:
+                            type: string
+                          start:
+                            type: string
+                          quantile:
+                            type: string
+                          department:
+                            type: string
+                      searchResultCount:
+                        type: integer
+                      maxSearchResultsFoundLabel:
+                        type: string
+                      loadMore:
+                        type: boolean
 
-components:
-  schemas:
-    Result:
-      type: string
+  /krankenhaussuche/krankenhaus/{id}/:
+    get:
+      summary: Details zu einem spezifischen Krankenhaus abrufen
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Eindeutige Kennung des Krankenhauses
+        - name: tx_tverzhospitaldata_show[department]
+          in: query
+          schema:
+            type: string
+          description: Abteilungsfilter
+        - name: tx_tverzhospitaldata_show[geolabel]
+          in: query
+          schema:
+            type: string
+          description: Geografischer Labelfilter
+        - name: tx_tverzhospitaldata_show[quantile]
+          in: query
+          schema:
+            type: string
+          description: Quantilfilter
+        - name: tx_tverzhospitaldata_show[searchlabel]
+          in: query
+          schema:
+            type: string
+          description: Suchlabelfilter
+        - name: cHash
+          in: query
+          schema:
+            type: string
+          description: Cache-Hash
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            text/html:
+              schema:
+                type: string
+
