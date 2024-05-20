@@ -155,6 +155,163 @@ paths:
                     ln:
                       type: string
 
+ openapi: "3.0.0"
+info:
+  description: "The Bundes-Klinik-Atlas API provides information about German clinics and their facilities."
+  version: "1.0.0"
+  title: "Bundes-Klinik-Atlas API"
+  x-office: "Federal Ministry of Health"
+  contact:
+    name: "Federal Ministry of Health"
+    email: poststelle@bmg.bund.de
+    url: https://bundes-klinik-atlas.de
+
+servers:
+  - url: https://bundes-klinik-atlas.de
+
+paths:
+  /fileadmin/json/locations.json:
+    get:
+      summary: Retrieve a list of German clinics
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    street:
+                      type: string
+                    city:
+                      type: string
+                    zip:
+                      type: integer
+                    phone:
+                      type: string
+                    mail:
+                      type: string
+                    beds_number:
+                      type: integer
+                    latitude:
+                      type: string
+                    longitude:
+                      type: string
+                    link:
+                      type: string
+
+  /fileadmin/json/states.json:
+    get:
+      summary: Retrieve a list of German states
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    cases_number:
+                      type: integer
+                    caregivers_number:
+                      type: integer
+                    doctors_number:
+                      type: integer
+                    location_number:
+                      type: integer
+
+  /fileadmin/json/german-states.json:
+    get:
+      summary: Retrieve a list of German states with coordinates
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                    lat:
+                      type: string
+                    lon:
+                      type: string
+
+  /fileadmin/json/icd_codes.json:
+    get:
+      summary: Retrieve a list of ICD codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icdcode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/ops_codes.json:
+    get:
+      summary: Retrieve a list of OPS codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    opscode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/german-places.json:
+    get:
+      summary: Retrieve a list of German places
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    p:
+                      type: string
+                    c:
+                      type: string
+                    m:
+                      type: string
+                    ct:
+                      type: integer
+                    d:
+                      type: string
+                    lt:
+                      type: string
+                    ln:
+                      type: string
+
   /searchresults/:
     get:
       summary: Search for hospitals based on specific criteria
@@ -228,7 +385,7 @@ paths:
                             value:
                               type: string
                             showValue:
-                              type: integer # Changed to integer to match API response
+                              type: integer
                             appendUnit:
                               type: string
                             showRangeLabel:
@@ -241,7 +398,7 @@ paths:
                                   key:
                                     type: string
                                   value:
-                                    type: integer # Changed to integer to match API response
+                                    type: string
                             labelClass:
                               type: string
                             options:
@@ -254,7 +411,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: integer # Changed to integer to match API response
+                                    type: string
                                   icon:
                                     type: string
                                   selected:
@@ -305,7 +462,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: integer # Changed to integer to match API response
+                            type: integer
                           geolabel:
                             type: string
                           latlon:
@@ -315,7 +472,7 @@ paths:
                           searchlabel:
                             type: string
                           start:
-                            type: integer # Changed to integer to match API response
+                            type: integer
                           quantile:
                             type: string
                           department:
