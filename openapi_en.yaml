@@ -195,51 +195,11 @@ paths:
     get:
       summary: Search for hospitals based on specific criteria
       parameters:
-        - name: tx_solr[start]
-          in: query
-          schema:
-            type: integer
-          description: Start index for search results
         - name: tx_solr[rows]
           in: query
           schema:
             type: integer
           description: Number of rows to return (must be a positive integer)
-        - name: tx_solr[geolabel]
-          in: query
-          schema:
-            type: string
-          description: Geographical label for filtering results
-        - name: tx_solr[latlon]
-          in: query
-          schema:
-            type: string
-          description: Latitude and longitude for filtering results
-        - name: tx_solr[ops]
-          in: query
-          schema:
-            type: string
-          description: OPS codes for filtering results
-        - name: tx_solr[searchlabel]
-          in: query
-          schema:
-            type: string
-          description: Search label for filtering results
-        - name: tx_solr[icd]
-          in: query
-          schema:
-            type: string
-          description: ICD codes for filtering results
-        - name: tx_solr[quantile]
-          in: query
-          schema:
-            type: string
-          description: Quantile for filtering results
-        - name: tx_solr[department]
-          in: query
-          schema:
-            type: string
-          description: Department for filtering results
       responses:
         "200":
           description: Successful response
@@ -409,7 +369,7 @@ paths:
               schema:
                 type: string
 
-    /krankenhaussuche/krankenhaus/{id}/:
+  /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Retrieve details of a specific hospital
       parameters:
