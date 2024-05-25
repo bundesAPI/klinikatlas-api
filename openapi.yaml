@@ -33,7 +33,7 @@ paths:
                     city:
                       type: string
                     zip:
-                      type: integer
+                      type: string
                     phone:
                       type: string
                     mail:
