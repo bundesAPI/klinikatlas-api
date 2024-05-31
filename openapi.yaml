@@ -10,7 +10,7 @@ info:
     url: https://bundes-klinik-atlas.de
 
 servers:
-  - url: https://bundes-klinik-atlas.de
+  - url: https://klinikatlas.api.bund.dev
 
 paths:
   /fileadmin/json/locations.json:
