@@ -1,46 +1,546 @@
 openapi: "3.0.0"
 info:
-  description: "API Description"
+  description: "The Bundes-Klinik-Atlas API provides information about German clinics and their facilities."
   version: "1.0.0"
-  title: "API Name"
-  x-office: "Amtsname"
+  title: "Bundes-Klinik-Atlas API"
+  x-office: "Federal Ministry of Health"
   contact:
-    name: Responsible authority
-    email: behoerde@example.com
-    url: https://example.com
+    name: "Federal Ministry of Health"
+    email: poststelle@bmg.bund.de
+    url: https://bundes-klinik-atlas.de
 
 servers:
-  - url: "https://warnung.bund.de/api31"
-
-tags:
-  - name: default
+  - url: https://bundes-klinik-atlas.de
 
 paths:
-  /dashboard/{AGS}.json:
+  /fileadmin/json/locations.json:
     get:
-      summary: Name of endpoint
-      description: Here the function of the end point is described.
-      operationId: getAGS
-      tags:
-        - default
+      summary: Retrieve a list of German clinics
       responses:
-        '200':
-            description: OK
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Result'
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    street:
+                      type: string
+                    city:
+                      type: string
+                    zip:
+                      type: integer
+                    phone:
+                      type: string
+                    mail:
+                      type: string
+                    beds_number:
+                      type: integer
+                    latitude:
+                      type: string
+                    longitude:
+                      type: string
+                    link:
+                      type: string
+
+  /fileadmin/json/states.json:
+    get:
+      summary: Retrieve a list of German states
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    cases_number:
+                      type: integer
+                    caregivers_number:
+                      type: integer
+                    doctors_number:
+                      type: integer
+                    location_number:
+                      type: integer
+
+  /fileadmin/json/german-states.json:
+    get:
+      summary: Retrieve a list of German states with coordinates
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                    lat:
+                      type: string
+                    lon:
+                      type: string
+
+  /fileadmin/json/icd_codes.json:
+    get:
+      summary: Retrieve a list of ICD codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icdcode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/ops_codes.json:
+    get:
+      summary: Retrieve a list of OPS codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    opscode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/german-places.json:
+    get:
+      summary: Retrieve a list of German places
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    p:
+                      type: string
+                    c:
+                      type: string
+                    m:
+                      type: string
+                    ct:
+                      type: integer
+                    d:
+                      type: string
+                    lt:
+                      type: string
+                    ln:
+                      type: string
+
+ openapi: "3.0.0"
+info:
+  description: "The Bundes-Klinik-Atlas API provides information about German clinics and their facilities."
+  version: "1.0.0"
+  title: "Bundes-Klinik-Atlas API"
+  x-office: "Federal Ministry of Health"
+  contact:
+    name: "Federal Ministry of Health"
+    email: poststelle@bmg.bund.de
+    url: https://bundes-klinik-atlas.de
+
+servers:
+  - url: https://bundes-klinik-atlas.de
+
+paths:
+  /fileadmin/json/locations.json:
+    get:
+      summary: Retrieve a list of German clinics
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    street:
+                      type: string
+                    city:
+                      type: string
+                    zip:
+                      type: integer
+                    phone:
+                      type: string
+                    mail:
+                      type: string
+                    beds_number:
+                      type: integer
+                    latitude:
+                      type: string
+                    longitude:
+                      type: string
+                    link:
+                      type: string
+
+  /fileadmin/json/states.json:
+    get:
+      summary: Retrieve a list of German states
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    cases_number:
+                      type: integer
+                    caregivers_number:
+                      type: integer
+                    doctors_number:
+                      type: integer
+                    location_number:
+                      type: integer
+
+  /fileadmin/json/german-states.json:
+    get:
+      summary: Retrieve a list of German states with coordinates
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                    lat:
+                      type: string
+                    lon:
+                      type: string
+
+  /fileadmin/json/icd_codes.json:
+    get:
+      summary: Retrieve a list of ICD codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icdcode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/ops_codes.json:
+    get:
+      summary: Retrieve a list of OPS codes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    opscode:
+                      type: string
+                    description:
+                      type: string
+
+  /fileadmin/json/german-places.json:
+    get:
+      summary: Retrieve a list of German places
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    p:
+                      type: string
+                    c:
+                      type: string
+                    m:
+                      type: string
+                    ct:
+                      type: integer
+                    d:
+                      type: string
+                    lt:
+                      type: string
+                    ln:
+                      type: string
+
+  /searchresults/:
+    get:
+      summary: Search for hospitals based on specific criteria
       parameters:
-        - in: path
+        - name: tx_solr[rows]
+          in: query
+          schema:
+            type: integer
+          description: Number of rows to return (must be a positive integer)
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        header:
+                          type: string
+                        address:
+                          type: string
+                        distance:
+                          type: number
+                        detailLink:
+                          type: string
+                        content:
+                          type: object
+                          properties:
+                            items:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  header:
+                                    type: string
+                                  icon:
+                                    type: string
+                                  tooltip:
+                                    type: string
+                                  infoData:
+                                    type: array
+                                    items:
+                                      type: object
+                  filters:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            template:
+                              type: string
+                            label:
+                              type: string
+                            extraClass:
+                              type: string
+                            tooltip:
+                              type: string
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            value:
+                              type: string
+                            showValue:
+                              type: integer
+                            appendUnit:
+                              type: string
+                            showRangeLabel:
+                              type: boolean
+                            sliderOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                            labelClass:
+                              type: string
+                            options:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  label:
+                                    type: string
+                                  id:
+                                    type: string
+                                  value:
+                                    type: string
+                                  icon:
+                                    type: string
+                                  selected:
+                                    type: boolean
+                                  tooltip:
+                                    type: string
+                            isAccordion:
+                              type: boolean
+                            tagName:
+                              type: string
+                            headingClass:
+                              type: string
+                            isHorizontal:
+                              type: boolean
+                  sortings:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            template:
+                              type: string
+                            isHorizontal:
+                              type: boolean
+                            label:
+                              type: string
+                            id:
+                              type: string
+                            options:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  label:
+                                    type: string
+                                  id:
+                                    type: string
+                                  value:
+                                    type: string
+                                  selected:
+                                    type: boolean
+                  metaInfos:
+                    type: object
+                    properties:
+                      searchArguments:
+                        type: object
+                        properties:
+                          rows:
+                            type: integer
+                          geolabel:
+                            type: string
+                          latlon:
+                            type: string
+                          ops:
+                            type: string
+                          searchlabel:
+                            type: string
+                          start:
+                            type: integer
+                          quantile:
+                            type: string
+                          department:
+                            type: string
+                      searchResultCount:
+                        type: integer
+                      maxSearchResultsFoundLabel:
+                        type: string
+                      loadMore:
+                        type: boolean
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /krankenhaussuche/krankenhaus/{id}/:
+    get:
+      summary: Retrieve details of a specific hospital
+      parameters:
+        - name: id
+          in: path
           required: true
-          name: AGS
+          schema:
+            type: integer
+          description: Unique identifier of the hospital
+        - name: tx_tverzhospitaldata_show[department]
+          in: query
           schema:
             type: string
-          description: Official area key - can be retrieved from [here](https://www.xrepository.de/api/xrepository/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:rs_2021-07-31/download/Regionalschl_ssel_2021-07-31.json). The last 7 digits have to be replaced with "0000000" because data is only offered on the area level [Kreisebene](https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel).
-          example: "example-parameter"
-
-
-components:
-    schemas:
-      Result:
-        type: string
+          description: Department filter
+        - name: tx_tverzhospitaldata_show[geolabel]
+          in: query
+          schema:
+            type: string
+          description: Geographical label filter
+        - name: tx_tverzhospitaldata_show[quantile]
+          in: query
+          schema:
+            type: string
+          description: Quantile filter
+        - name: tx_tverzhospitaldata_show[searchlabel]
+          in: query
+          schema:
+            type: string
+          description: Search label filter
+        - name: cHash
+          in: query
+          schema:
+            type: string
+          description: Cache hash
+      responses:
+        "200":
+          description: Successful response
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "503":
+          description: Service Unavailable
+          content:
+            text/html:
+              schema:
+                type: string

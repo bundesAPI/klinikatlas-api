@@ -1,14 +1,5 @@
 [[DE]](README.md)/[[EN]](README_en.md)
 
+# Bundes-Klinik-Atlas API
 
-# [_TEMPLATE_]
-
-## Quickstart
-
-- Add openAPI spec in German to _openapi.yml_
-- Add openAPI spec in English to _openapi_en.yml_ (or remove _openapi_en.yml_ )
-- Update _index.html_ (insert the API-name in the title)
-- Update _generator_config.yaml_ (Update all values surrounded with <>)
-- Update the url in _CNAME_ once the api has its own subdomain
-- Replace the content of README.md with a German description of the API
-- Fill (or remove) README_en.md or add README-files in other languages.
+The Bundes-Klinik-Atlas API powers the website https://bundes-klinik-atlas.de/ and provides comprehensive and comparable information about German clinics. The data supports patients in choosing the right hospital and offers detailed information about the quality of care, the medical and nursing staff, and other important data points.
