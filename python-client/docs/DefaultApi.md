@@ -1,6 +1,6 @@
 # klinikatlas.DefaultApi
 
-All URIs are relative to *https://klinikatlas.api.bund.dev*
+All URIs are relative to *https://klinikatlas.api.proxy.bund.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,10 +28,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_german_places_json_get200_response_inner import FileadminJsonGermanPlacesJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -90,10 +90,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_german_states_json_get200_response_inner import FileadminJsonGermanStatesJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -152,10 +152,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_icd_codes_json_get200_response_inner import FileadminJsonIcdCodesJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -214,10 +214,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_locations_json_get200_response_inner import FileadminJsonLocationsJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -276,10 +276,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_ops_codes_json_get200_response_inner import FileadminJsonOpsCodesJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -338,10 +338,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.fileadmin_json_states_json_get200_response_inner import FileadminJsonStatesJsonGet200ResponseInner
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -399,10 +399,10 @@ import time
 from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
@@ -485,10 +485,10 @@ from deutschland import klinikatlas
 from deutschland.klinikatlas.api import default_api
 from deutschland.klinikatlas.model.searchresults_get200_response import SearchresultsGet200Response
 from pprint import pprint
-# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
+# Defining the host is optional and defaults to https://klinikatlas.api.proxy.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://klinikatlas.api.bund.dev"
+    host = "https://klinikatlas.api.proxy.bund.dev"
 )
 
 
