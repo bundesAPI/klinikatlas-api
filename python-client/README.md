@@ -58,10 +58,10 @@ from deutschland.klinikatlas.model.fileadmin_json_locations_json_get200_response
 from deutschland.klinikatlas.model.fileadmin_json_ops_codes_json_get200_response_inner import FileadminJsonOpsCodesJsonGet200ResponseInner
 from deutschland.klinikatlas.model.fileadmin_json_states_json_get200_response_inner import FileadminJsonStatesJsonGet200ResponseInner
 from deutschland.klinikatlas.model.searchresults_get200_response import SearchresultsGet200Response
-# Defining the host is optional and defaults to https://bundes-klinik-atlas.de
+# Defining the host is optional and defaults to https://klinikatlas.api.bund.dev
 # See configuration.py for a list of all supported configuration parameters.
 configuration = klinikatlas.Configuration(
-    host = "https://bundes-klinik-atlas.de"
+    host = "https://klinikatlas.api.bund.dev"
 )
 
 
@@ -81,7 +81,7 @@ with klinikatlas.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://bundes-klinik-atlas.de*
+All URIs are relative to *https://klinikatlas.api.bund.dev*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
