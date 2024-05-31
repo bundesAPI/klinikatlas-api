@@ -10,7 +10,7 @@ info:
     url: https://bundes-klinik-atlas.de
 
 servers:
-  - url: https://klinikatlas.api.bund.dev
+  - url: https://klinikatlas.api.proxy.bund.dev
 
 paths:
   /fileadmin/json/locations.json:
