@@ -409,7 +409,7 @@ paths:
               schema:
                 type: string
                 
-    /krankenhaussuche/krankenhaus/{id}/:
+  /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Details zu einem spezifischen Krankenhaus abrufen
       parameters:
