@@ -8,10 +8,8 @@ info:
     name: "Bundesministerium für Gesundheit"
     email: poststelle@bmg.bund.de
     url: https://bundes-klinik-atlas.de
-
 servers:
   - url: https://bundes-klinik-atlas.de
-
 paths:
   /fileadmin/json/locations.json:
     get:
@@ -20,7 +18,7 @@ paths:
         '200':
           description: Erfolgreiche Antwort
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 type: array
                 items:
@@ -33,7 +31,7 @@ paths:
                     city:
                       type: string
                     zip:
-                      type: integer
+                      type: string
                     phone:
                       type: string
                     mail:
@@ -52,7 +50,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /fileadmin/json/states.json:
     get:
       summary: Liste deutscher Bundesländer abrufen
@@ -82,7 +79,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /fileadmin/json/german-states.json:
     get:
       summary: Liste deutscher Bundesländer mit Koordinaten abrufen
@@ -108,7 +104,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /fileadmin/json/icd_codes.json:
     get:
       summary: Liste der ICD-Codes abrufen
@@ -132,7 +127,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /fileadmin/json/ops_codes.json:
     get:
       summary: Liste der OPS-Codes abrufen
@@ -156,7 +150,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /fileadmin/json/german-places.json:
     get:
       summary: Liste deutscher Orte abrufen
@@ -190,7 +183,6 @@ paths:
             text/html:
               schema:
                 type: string
-
   /searchresults/:
     get:
       summary: Suche nach Krankenhäusern basierend auf spezifischen Kriterien
@@ -302,13 +294,13 @@ paths:
                             name:
                               type: string
                             value:
-                              type: string
+                              type: [integer,string]
                             showValue:
                               type: integer
                             appendUnit:
                               type: string
                             showRangeLabel:
-                              type: boolean
+                              type: string
                             sliderOptions:
                               type: array
                               items:
@@ -330,7 +322,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: string
+                                    type: [integer,string]
                                   icon:
                                     type: string
                                   selected:
@@ -371,7 +363,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: string
+                                    type: [string,integer]
                                   selected:
                                     type: boolean
                   metaInfos:
@@ -381,7 +373,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: integer
+                            type: [string,integer]
                           geolabel:
                             type: string
                           latlon:
@@ -396,20 +388,19 @@ paths:
                             type: string
                           department:
                             type: string
-                      searchResultCount:
+                      searchResultCound:
                         type: integer
                       maxSearchResultsFoundLabel:
                         type: string
                       loadMore:
-                        type: boolean
+                        type: ['string','boolean']
         '503':
           description: Service Unavailable
           content:
             text/html:
               schema:
                 type: string
-                
-    /krankenhaussuche/krankenhaus/{id}/:
+  /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Details zu einem spezifischen Krankenhaus abrufen
       parameters:
@@ -463,3 +454,4 @@ paths:
             text/html:
               schema:
                 type: string
+
