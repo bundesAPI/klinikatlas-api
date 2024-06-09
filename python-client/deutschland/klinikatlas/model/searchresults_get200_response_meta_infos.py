@@ -103,7 +103,7 @@ class SearchresultsGet200ResponseMetaInfos(ModelNormal):
             "search_arguments": (
                 SearchresultsGet200ResponseMetaInfosSearchArguments,
             ),  # noqa: E501
-            "search_result_count": (int,),  # noqa: E501
+            "search_result_cound": (int,),  # noqa: E501
             "max_search_results_found_label": (str,),  # noqa: E501
             "load_more": (bool,),  # noqa: E501
         }
@@ -114,7 +114,7 @@ class SearchresultsGet200ResponseMetaInfos(ModelNormal):
 
     attribute_map = {
         "search_arguments": "searchArguments",  # noqa: E501
-        "search_result_count": "searchResultCount",  # noqa: E501
+        "search_result_cound": "searchResultCound",  # noqa: E501
         "max_search_results_found_label": "maxSearchResultsFoundLabel",  # noqa: E501
         "load_more": "loadMore",  # noqa: E501
     }
@@ -160,7 +160,7 @@ class SearchresultsGet200ResponseMetaInfos(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             search_arguments (SearchresultsGet200ResponseMetaInfosSearchArguments): [optional]  # noqa: E501
-            search_result_count (int): [optional]  # noqa: E501
+            search_result_cound (int): [optional]  # noqa: E501
             max_search_results_found_label (str): [optional]  # noqa: E501
             load_more (bool): [optional]  # noqa: E501
         """
@@ -254,7 +254,7 @@ class SearchresultsGet200ResponseMetaInfos(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             search_arguments (SearchresultsGet200ResponseMetaInfosSearchArguments): [optional]  # noqa: E501
-            search_result_count (int): [optional]  # noqa: E501
+            search_result_cound (int): [optional]  # noqa: E501
             max_search_results_found_label (str): [optional]  # noqa: E501
             load_more (bool): [optional]  # noqa: E501
         """
