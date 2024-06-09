@@ -302,7 +302,7 @@ paths:
                             name:
                               type: string
                             value:
-                              type: string
+                              type: integer
                             showValue:
                               type: integer
                             appendUnit:
@@ -317,7 +317,7 @@ paths:
                                   key:
                                     type: string
                                   value:
-                                    type: string
+                                    type: [string,integer]
                             labelClass:
                               type: string
                             options:
@@ -330,7 +330,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: string
+                                    type:[ string,integer]
                                   icon:
                                     type: string
                                   selected:
@@ -371,7 +371,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: string
+                                    type: [string,integer]
                                   selected:
                                     type: boolean
                   metaInfos:
@@ -381,7 +381,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: integer
+                            type: [integer,string]
                           geolabel:
                             type: string
                           latlon:
