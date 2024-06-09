@@ -8,8 +8,10 @@ info:
     name: "Bundesministerium für Gesundheit"
     email: poststelle@bmg.bund.de
     url: https://bundes-klinik-atlas.de
+
 servers:
-  - url: https://bundes-klinik-atlas.de
+  - url: https://klinikatlas.api.proxy.bund.dev
+
 paths:
   /fileadmin/json/locations.json:
     get:
@@ -18,7 +20,7 @@ paths:
         '200':
           description: Erfolgreiche Antwort
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 type: array
                 items:
@@ -50,6 +52,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /fileadmin/json/states.json:
     get:
       summary: Liste deutscher Bundesländer abrufen
@@ -79,6 +82,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /fileadmin/json/german-states.json:
     get:
       summary: Liste deutscher Bundesländer mit Koordinaten abrufen
@@ -104,6 +108,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /fileadmin/json/icd_codes.json:
     get:
       summary: Liste der ICD-Codes abrufen
@@ -127,6 +132,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /fileadmin/json/ops_codes.json:
     get:
       summary: Liste der OPS-Codes abrufen
@@ -150,6 +156,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /fileadmin/json/german-places.json:
     get:
       summary: Liste deutscher Orte abrufen
@@ -183,6 +190,7 @@ paths:
             text/html:
               schema:
                 type: string
+
   /searchresults/:
     get:
       summary: Suche nach Krankenhäusern basierend auf spezifischen Kriterien
@@ -294,13 +302,13 @@ paths:
                             name:
                               type: string
                             value:
-                              type: [integer,string]
+                              type: string
                             showValue:
                               type: integer
                             appendUnit:
                               type: string
                             showRangeLabel:
-                              type: string
+                              type: boolean
                             sliderOptions:
                               type: array
                               items:
@@ -322,7 +330,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: [integer,string]
+                                    type: string
                                   icon:
                                     type: string
                                   selected:
@@ -363,7 +371,7 @@ paths:
                                   id:
                                     type: string
                                   value:
-                                    type: [string,integer]
+                                    type: string
                                   selected:
                                     type: boolean
                   metaInfos:
@@ -373,7 +381,7 @@ paths:
                         type: object
                         properties:
                           rows:
-                            type: [string,integer]
+                            type: integer
                           geolabel:
                             type: string
                           latlon:
@@ -393,13 +401,14 @@ paths:
                       maxSearchResultsFoundLabel:
                         type: string
                       loadMore:
-                        type: ['string','boolean']
+                        type: boolean
         '503':
           description: Service Unavailable
           content:
             text/html:
               schema:
                 type: string
+                
   /krankenhaussuche/krankenhaus/{id}/:
     get:
       summary: Details zu einem spezifischen Krankenhaus abrufen
@@ -454,4 +463,3 @@ paths:
             text/html:
               schema:
                 type: string
-
